@@ -1,0 +1,14 @@
+# vídeos, áudio, saídas de teste e pesos de modelo não entram no repo
+modelar/
+*.mp4
+*.mov
+*.MOV
+*.wav
+*.m4a
+*.jpg
+*.png
+*.safetensors
+*.bin
+*.npz
+__pycache__/
+.DS_Store
