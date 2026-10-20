@@ -15,6 +15,13 @@ for nav in opera brave chrome; do
 done
 "$YT" "${OUT[@]}" "$URL" && { echo "ok: $DIR/original.mp4"; exit 0; }
 
+# ponytail: o Python do yt-dlp do Homebrew às vezes quebra (ex.: "No module named expat"); uvx traz um Python próprio.
+if command -v uvx >/dev/null; then
+  for nav in opera brave chrome; do
+    uvx yt-dlp --cookies-from-browser "$nav" "${OUT[@]}" "$URL" && { echo "ok: $DIR/original.mp4 (uvx, cookies: $nav)"; exit 0; }
+  done
+fi
+
 echo "FALHOU. Instagram exige login e nenhum navegador aqui tem sessão do Instagram." >&2
 echo "Peça ao usuário para baixar (ex.: saveclip.app) e colocar o .mp4 na pasta do projeto; a skill aceita arquivo local." >&2
 exit 1
